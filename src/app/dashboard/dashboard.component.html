@@ -1,0 +1,11 @@
+<h3>Recent Samples</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let sample of samples" class="col-1-4">
+      routerLink="/detail/{{sample.id}}">
+    <div class="module sample">
+      <h4>{{sample.name}}</h4>
+    </div>
+  </a>
+</div>
+
+<app-sample-search></app-sample-search>
