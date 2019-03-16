@@ -1,4 +1,9 @@
 <h3>Recent Samples</h3>
+
+ <ul class="nav navbar-nav navbar-right">
+    <li><a href="" (click)="authService.logout()">Logout</a></li>
+  </ul>
+
 <div class="grid grid-pad">
   <a *ngFor="let sample of samples" class="col-1-4">
       routerLink="/detail/{{sample.id}}">

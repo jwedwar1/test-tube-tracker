@@ -1,4 +1,7 @@
 <h1>{{title}}</h1>
+<div *ngFor= "let note of notes | async">
+  <h3>{{note | json}}</h3>
+</div>
 <nav>
   <li><a routerLink="/dashboard">Dashboard</a></li>
   <li><a routerLink="/samples">Samples</a></li>

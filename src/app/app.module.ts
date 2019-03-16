@@ -16,6 +16,13 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { SampleSearchComponent } from './sample-search/sample-search.component';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+
+import { AuthService } from './auth.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +32,15 @@ import { SampleSearchComponent } from './sample-search/sample-search.component';
     MessagesComponent,
     DashboardComponent,
     SampleSearchComponent,
+    LoginComponent,
  
    
 
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -42,7 +53,7 @@ import { SampleSearchComponent } from './sample-search/sample-search.component';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

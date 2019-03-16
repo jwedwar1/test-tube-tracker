@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sample } from '../sample';
 import { SampleService } from '../sample.service';
+import { AuthService } from '../auth.service';
  
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,7 @@ import { SampleService } from '../sample.service';
 export class DashboardComponent implements OnInit {
   samples: Sample[] = [];
  
-  constructor(private sampleService: SampleService) { }
+  constructor(private sampleService: SampleService, private authService: AuthService) { }
  
   ngOnInit() {
     this.getSamples();
@@ -20,4 +21,7 @@ export class DashboardComponent implements OnInit {
     this.sampleService.getSamples()
       .subscribe(samples => this.samples = samples.slice(1, 5));
   }
+
+
+  
 }
