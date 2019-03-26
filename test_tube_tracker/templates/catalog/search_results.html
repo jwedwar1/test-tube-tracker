@@ -1,0 +1,21 @@
+<html>     
+    <head>         
+    <title>Sample Search</title>     
+    </head>     
+    <body>       
+        <p>You searched for: <strong>{{ query }}</strong></p>
+   
+        {% if samples %}           
+            <p>Found {{ samples|length }} Sample{{ samples|pluralize }}.</p>
+            <ul>               
+                {% for sample in samples %}
+                <li>
+                <a href="{{ sample.get_absolute_url }}">{{ sample.Name }}</a>
+                </li>                             
+                {% endfor %}           
+            </ul>       
+        {% else %}           
+            <p>No Samples matched your search criteria.</p>       
+        {% endif %}     
+    </body>
+</html>

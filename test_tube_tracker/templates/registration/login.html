@@ -1,0 +1,20 @@
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div class="main-content">
+  <div class="title">
+    Login
+  </div>
+  <div class="main">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+      </form>
+  </div>
+  <button><a href="{% url 'signup' %}">Sign Up</a></button>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% block content %}
+
+<h1>Delete Sample</h1>
+
+<p>Are you sure you want to delete the sample: {{ sample.Name }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Yes, delete.">
+</form>
+
+<p><a href="{{ sample.get_absolute_url }}">Back</a></p>
+
+{% endblock %}

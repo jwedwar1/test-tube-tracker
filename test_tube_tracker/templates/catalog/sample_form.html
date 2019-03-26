@@ -1,0 +1,40 @@
+{% block content %}
+  <h2>Edit Sample</h2>
+  <form method="post">
+    {% csrf_token %}
+    
+
+    {{ form.SampleAddForm }}
+    <p>
+<div class="fieldWrapper">
+    {{ form.Name.errors }}
+    <label for="{{ form.Name.id_for_label }}">Name:</label>
+    {{ form.Name }}
+</div>
+</p>
+<p>
+<div class="fieldWrapper">
+    {{ form.Date.errors }}
+    <label for="{{ form.Date.id_for_label }}">Date:</label>
+    {{ form.Date }}
+</div>
+</p>
+<p>
+<div class="fieldWrapper">
+    {{ form.Location.errors }}
+    <label for="{{ form.Location.id_for_label }}">Location:</label>
+    {{ form.Location }}
+</div>
+</p>
+<p>
+<div class="fieldWrapper">
+    {{ form.Description.errors }}
+    <label for="{{ form.Description.id_for_label }}">Description:</label>
+    {{ form.Description }}
+</div>
+</p>
+
+
+    <button type="submit">Edit Sample</button>
+  </form>
+{% endblock %}

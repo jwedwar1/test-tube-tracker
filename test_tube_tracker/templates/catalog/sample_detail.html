@@ -1,0 +1,18 @@
+{% block content %}
+  <h1>Name: {{ sample.Name }}</h1>
+
+  <p><strong>Owner:</strong> {{ sample.OwnerFullName }}</p>
+  <p><strong>Date:</strong> {{ sample.Date }}</p> 
+  <p><strong>Location:</strong> {{ sample.Location }}</p>  
+  <p><strong>Description:</strong> {{sample.Description}}</p>  
+
+
+
+<p><a href="{{ sample.get_absolute_url }}/update">Edit</a></p>
+<p><a href="{{ sample.get_absolute_url }}/delete">Delete</a></p>
+<p><a href="{% url 'sample_list' %}">Back</a></p>
+
+
+
+  
+{% endblock %}

@@ -1,0 +1,24 @@
+<!-- templates/home.html-->
+
+
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+<p>
+Hi {{ user.first_name }} {{user.last_name}}!
+</p>
+
+
+<p><a href="{% url 'sample_list' %}">View All Samples</a></p>
+<p><a href="{% url 'sample_add' %}">Add a Sample</a></p>  
+
+{% if user.is_authenticated %}
+<p><a href="{% url 'logout' %}">Log Out</a></p> 
+{% else %}
+<p><a href="{% url 'login' %}">Log In/Create Account</a></p> 
+{% endif %}
+  
+{% endblock content%}

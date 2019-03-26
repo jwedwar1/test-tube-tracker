@@ -1,0 +1,26 @@
+{% block content %}
+  <h1>Samples</h1>
+  {% if sample_list %}
+  
+  {% if error %}
+        <p style="color: red;">Please submit a search term.</p>
+    {% endif %}
+    <form action="/search/" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+
+
+
+  <ul>
+    {% for sample in sample_list %}
+      <li>
+        <a href="{{ sample.get_absolute_url }}">{{ sample.Name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no samples in the freezer.</p>
+  {% endif %} 
+  <p><a href="{% url 'sample_add' %}">Add a Sample</a></p>  
+{% endblock %}
