@@ -9,9 +9,28 @@ from .forms import SignUpForm, CreateSampleForm, SampleAddForm
 from django.views import generic
 from .models import Sample
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 
 from django.http import HttpResponse
+
+
+def class_view_decorator(function_decorator):
+    """Convert a function based decorator into a class based decorator usable
+    on class based Views.
+
+    Can't subclass the `View` as it breaks inheritance (super in particular),
+    so we monkey-patch instead.
+    """
+
+    def simple_decorator(View):
+        View.dispatch = method_decorator(function_decorator)(View.dispatch)
+        return View
+
+    return simple_decorator
+
+
 
 def SignUp(request):
     if request.method == 'POST':
@@ -36,7 +55,7 @@ class CreateSampleView(generic.CreateView):
     template_name = 'signup.html'
 
 
-
+@login_required
 def AddSample(request):
     if request.method == 'POST':
         form = SampleAddForm(request.POST)
@@ -60,10 +79,12 @@ class SampleListView(generic.ListView):
 class SampleDetailView(generic.DetailView):
     model = Sample
 
+@class_view_decorator(login_required)
 class SampleUpdate(UpdateView):
     model = Sample
     fields = ['Name', 'Date', 'Location', 'Description']
 
+@class_view_decorator(login_required)
 class SampleDelete(DeleteView):
     model = Sample
     success_url = reverse_lazy('sample_list')
@@ -88,3 +109,5 @@ def search(request):
 
             return render(request, 'catalog/search_results.html', {'samples': samples, 'query': q})
     return render(request, 'catalog/search_form.html', {'error': error})
+
+
