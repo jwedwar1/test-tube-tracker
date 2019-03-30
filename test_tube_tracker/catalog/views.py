@@ -55,6 +55,7 @@ def AddSample(request):
 
 class SampleListView(generic.ListView):
     model = Sample
+    paginate_by = 10
 
 class SampleDetailView(generic.DetailView):
     model = Sample

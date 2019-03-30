@@ -1,18 +1,114 @@
+{% load bootstrap4 %}
+{% load staticfiles %}
+
+<head>
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+
+
 {% block content %}
-  <h1>Name: {{ sample.Name }}</h1>
-
-  <p><strong>Owner:</strong> {{ sample.OwnerFullName }}</p>
-  <p><strong>Date:</strong> {{ sample.Date }}</p> 
-  <p><strong>Location:</strong> {{ sample.Location }}</p>  
-  <p><strong>Description:</strong> {{sample.Description}}</p>  
 
 
 
+<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #f2f2f2;">
+  <div class="container">
+
+
+  <ul class="nav navbar-nav navbar-left">
+    <form action="/search/" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+    </ul>
+    
+
+    <ul class="nav navbar-nav navbar-center">
+    <h1 class="display-4">Test Tube Tracker</h1>
+    </ul>
+    <ul class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          {% if user.is_authenticated %}
+            <li><a href="#">Profile</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+          </ul>
+        </ul>
+
+     
+  </div>
+</nav>
+
+
+
+
+
+<br>
+
+
+
+
+<section id="cover">
+    <div id="cover-caption">
+        <div id="container" class="container">
+            <div class="row text-black">
+                <div class="col-sm-6 offset-sm-3 text-center">
+                    <h1 class="display-4">{{ sample.Name }}</h1>
+                    <!--<div class="info-form text-center"> -->
+                    <div class="form-group text-left pl-4" style="display:inline-block">
+                    
+
+
+                      <br>
+                      <p><strong>Owner:</strong> {{ sample.OwnerFullName }}</p>
+                      <br>
+                      <p><strong>Date:</strong> {{ sample.Date }}</p> 
+                      <br>
+                      <p><strong>Location:</strong> {{ sample.Location }}</p> 
+                      <br> 
+                      <p><strong>Description:</strong> {{sample.Description}}</p>  
+                      <br>
+
+                        
+                            
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                    <div class="px-4">
+                    <button  class="btn btn-primary text-white"><a class="text-white" href="{{ sample.get_absolute_url }}/update">Edit</a></button>
+                    </div>
+                    <div class="px-4">
+                    <button  class="btn btn-primary text-white"><a class="text-white" href="{{ sample.get_absolute_url }}/delete">Delete</a></button>
+                    </div>
+                    <div class="px-4">
+                    <button  class="btn btn-primary text-white"><a class="text-white" href="{% url 'sample_list' %}">Back</a></button>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+
+<!--
 <p><a href="{{ sample.get_absolute_url }}/update">Edit</a></p>
 <p><a href="{{ sample.get_absolute_url }}/delete">Delete</a></p>
 <p><a href="{% url 'sample_list' %}">Back</a></p>
+-->
 
-
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
   
 {% endblock %}

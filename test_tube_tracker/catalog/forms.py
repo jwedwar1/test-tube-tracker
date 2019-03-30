@@ -6,9 +6,9 @@ from django.forms import ModelForm
 
 
 class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30,  help_text='Required.')
-    last_name = forms.CharField(max_length=30,  help_text='Required.')
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+    first_name = forms.CharField(max_length=30)
+    last_name = forms.CharField(max_length=30)
+    email = forms.EmailField(max_length=254)
 
     class Meta:
         model = User
