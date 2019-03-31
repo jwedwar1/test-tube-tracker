@@ -24,6 +24,7 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView
+from catalog import views
 
 
 
@@ -31,7 +32,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
    # path('', RedirectView.as_view(url='/catalog/')),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    #path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('', views.sampledef, name='home'),
     path('accounts/', include('django.contrib.auth.urls')), # new
     url(r'^', include('catalog.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

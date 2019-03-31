@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
     'bootstrap4', 
+    "django_tables2",
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -126,5 +128,5 @@ STATICFILES_DIRS = [
 ]
 
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'sample_list'
+LOGOUT_REDIRECT_URL = 'sample_list'
