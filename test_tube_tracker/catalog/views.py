@@ -75,6 +75,7 @@ def AddSample(request):
     else:
         form = SampleAddForm()
     return render(request, 'add_sample2.html', {'form': form})
+    #return redirect('home')
 
 
 
@@ -95,7 +96,7 @@ class SampleDetailView(generic.DetailView):
 @class_view_decorator(login_required)
 class SampleUpdate(UpdateView):
     model = Sample
-    fields = ['Name', 'Date', 'Location', 'Description']
+    fields = ['Name', 'Date', 'Location', 'Description', 'Shelf', 'Row', 'Column', 'BoxRow', 'BoxColumn']
 
 @class_view_decorator(login_required)
 class SampleDelete(DeleteView):

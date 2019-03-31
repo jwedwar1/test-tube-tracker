@@ -27,5 +27,5 @@ class CreateSampleForm(forms.ModelForm):
 class SampleAddForm(ModelForm):
     class Meta:
         model = Sample
-        fields = ('Name', 'Date', 'Location', 'Description', 'Owner')
-        widgets = {'Owner': forms.HiddenInput()}
+        fields = ('Name', 'Date', 'Location', 'Shelf', 'Row', 'Column', 'Box', 'BoxRow', 'BoxColumn', 'Description', 'Owner')
+        widgets = {'Owner': forms.HiddenInput(), 'Location': forms.HiddenInput()}
