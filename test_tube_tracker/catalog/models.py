@@ -62,12 +62,12 @@ class Sample(models.Model):
     Description = models.CharField(max_length=500, blank=True, default='', help_text='Optional: enter a brief description of the sample')
     Owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     OwnerFullName = models.CharField(max_length = 50, default = '', verbose_name = "Owner Name")
-    Shelf = models.IntegerField(null=True, choices=SHELFCHOICES)
-    Row = models.IntegerField(null=True, choices=ROWCHOICES)
-    Column = models.IntegerField(null=True, choices=COLUMNCHOICES)
-    Box = models.IntegerField(null=True, choices=BOXCHOICES, help_text='Box 1 is closest to you, Box 3 is farthest')
-    BoxRow = models.IntegerField(null=True, choices=BOXROWCHOICES)
-    BoxColumn = models.IntegerField(null=True, choices=BOXCOLUMNCHOICES)
+    Shelf = models.IntegerField(choices=SHELFCHOICES)
+    Row = models.IntegerField(choices=ROWCHOICES)
+    Column = models.IntegerField( choices=COLUMNCHOICES)
+    Box = models.IntegerField(choices=BOXCHOICES, help_text='Box 1 is closest to you, Box 3 is farthest')
+    BoxRow = models.IntegerField(choices=BOXROWCHOICES, verbose_name = "Box Row")
+    BoxColumn = models.IntegerField(choices=BOXCOLUMNCHOICES, verbose_name = "Box Column")
     
 
 
