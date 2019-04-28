@@ -128,5 +128,5 @@ STATICFILES_DIRS = [
 ]
 
 
-LOGIN_REDIRECT_URL = 'sample_list'
-LOGOUT_REDIRECT_URL = 'sample_list'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

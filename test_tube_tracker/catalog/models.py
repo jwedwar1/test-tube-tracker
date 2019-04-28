@@ -57,6 +57,7 @@ class Sample(models.Model):
     )
     Name = models.CharField(max_length = 50, default = '', help_text='Enter the name of the sample')
     Date = models.DateField(null=True, blank=True, default = datetime.date.today())
+    DateString = models.CharField(max_length = 50, default = '', verbose_name = "Date")
     Location = models.CharField(null=True, blank=True, max_length = 20, default = '', help_text='Enter the index of the sample in the freezer')
     Description = models.CharField(max_length=500, blank=True, default='', help_text='Optional: enter a brief description of the sample')
     Owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -67,6 +68,7 @@ class Sample(models.Model):
     Box = models.IntegerField(null=True, choices=BOXCHOICES, help_text='Box 1 is closest to you, Box 3 is farthest')
     BoxRow = models.IntegerField(null=True, choices=BOXROWCHOICES)
     BoxColumn = models.IntegerField(null=True, choices=BOXCOLUMNCHOICES)
+    
 
 
     

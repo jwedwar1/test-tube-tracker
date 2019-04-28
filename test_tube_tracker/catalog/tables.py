@@ -7,7 +7,7 @@ class SampleTable(tables.Table):
     
     class Meta:
         model = Sample
-        exclude = ('id', 'Description', 'Owner', )
+        exclude = ('id', 'Description', 'Owner', 'Date' )
         template_name = 'django_tables2/bootstrap4.html'
 
     

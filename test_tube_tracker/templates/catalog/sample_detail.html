@@ -2,6 +2,8 @@
 {% load staticfiles %}
 
 <head>
+<title>Test Tube Tracker</title>
+<link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300' rel='stylesheet' type='text/css'>
@@ -33,7 +35,6 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
           <ul class="dropdown-menu">
           {% if user.is_authenticated %}
-            <li><a href="#">Profile</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
             <li><a href="{% url 'login' %}">Log In</a></li>
@@ -63,36 +64,50 @@
                     <h1 class="display-4">{{ sample.Name }}</h1>
                     <!--<div class="info-form text-center"> -->
                     <div class="form-group text-left pl-4" style="display:inline-block">
-                    
 
+                    <div class="row">
 
-                      <br>
+                    <div class="col-md-6">
+                     <br>
                       <p><strong>Owner:</strong> {{ sample.OwnerFullName }}</p>
                       <br>
-                      <p><strong>Date:</strong> {{ sample.Date }}</p> 
-                      <br>
-                      <p><strong>Location:</strong> {{ sample.Location }}</p> 
-                      <br> 
-                      <p><strong>Description:</strong> {{sample.Description}}</p>  
-                      <br>
-                      <p><strong>Shelf:</strong> {{sample.Shelf}}</p>  
+                       <p><strong>Shelf:</strong> {{sample.Shelf}}</p>  
                       <br>
                       <p><strong>Row:</strong> {{sample.Row}}</p>  
                       <br>
                       <p><strong>Column:</strong> {{sample.Column}}</p>  
                       <br>
+                      
+                      
+                    </div>
+
+                    <div class="col-md-6">
+                    <br>
+                    <p><strong>Date:</strong> {{ sample.DateString }}</p> 
+                      <br>
+                     
                       <p><strong>Box:</strong> {{sample.Box}}</p>  
                       <br>
                       <p><strong>BoxRow:</strong> {{sample.BoxRow}}</p>  
                       <br>
                       <p><strong>BoxColumn:</strong> {{sample.BoxColumn}}</p>  
                       <br>
+                    </div>
+
+                    </div>
+                    
+
+
+                      <br> 
+                      <p><strong>Description:</strong> {{sample.Description}}</p>  
+                      <br>
+                      
 
                         
                             
                     </div>
                     <br>
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center pb-4">
                     <div class="px-4">
                     <button  class="btn btn-primary text-white"><a class="text-white" href="{{ sample.get_absolute_url }}/update">Edit</a></button>
                     </div>

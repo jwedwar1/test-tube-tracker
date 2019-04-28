@@ -70,6 +70,8 @@ def AddSample(request):
             Sample = form.save(commit=False)
             Sample.Owner = request.user
             Sample.OwnerFullName = request.user.first_name + " " + request.user.last_name
+            Sample.Location = str(Sample.Shelf) + "" + str(Sample.Row) + "" + str(Sample.Column) + "" + str(Sample.Box) + "" + str(Sample.BoxRow) + "" + str(Sample.BoxColumn)
+            Sample.DateString = str(Sample.Date)
             Sample = Sample.save()
             return redirect('home')
     else:
@@ -96,7 +98,7 @@ class SampleDetailView(generic.DetailView):
 @class_view_decorator(login_required)
 class SampleUpdate(UpdateView):
     model = Sample
-    fields = ['Name', 'Date', 'Location', 'Description', 'Shelf', 'Row', 'Column', 'BoxRow', 'BoxColumn']
+    fields = ['Name', 'DateString', 'Location', 'Description', 'Shelf', 'Row', 'Column', 'BoxRow', 'BoxColumn']
 
 @class_view_decorator(login_required)
 class SampleDelete(DeleteView):

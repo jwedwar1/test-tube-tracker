@@ -1,22 +1,22 @@
-{% load render_table from django_tables2 %}
-{% load bootstrap4 %}
-{% load staticfiles %}
-
-<!doctype html>
-<html>
-    <head>
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
+<!-- templates/home.html-->
 
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% load static %}
+
+<link rel="shortcut icon" type="image/png" href="{% static 'images/testtube.png' %}">
+
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        
-        
-        <title>Test Tube Tracker</title>
-    </head>
-    <body>
+  
+
+
+{% block content %}
+
+
 
 
 
@@ -40,7 +40,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
           <ul class="dropdown-menu">
           {% if user.is_authenticated %}
-            
+           
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
             <li><a href="{% url 'login' %}">Log In</a></li>
@@ -54,25 +54,44 @@
 </nav>
 
 
-<div class="px-4">
 
 
 
-
-
-        {% render_table table %}
-        
-        <div class="pb-4">
-        <button  class="btn btn-primary text-white"><a class="text-white" href="{% url 'sample_add' %}">Add a Sample</a></button> 
-        </div>
-
+<!--
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <input type="text" placeholder="Search..">
 </div>
-    </body>
+-->
 
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+
+
+
+
+<h1>Test</h1>
+
+<p>
+Hi {{ user.first_name }} {{user.last_name}}!
+</p>
+
+
+<p><a href="{% url 'sample_list' %}">View All Samples</a></p>
+<p><a href="{% url 'sample_add' %}">Add a Sample</a></p>  
+
+{% if user.is_authenticated %}
+<p><a href="{% url 'logout' %}">Log Out</a></p> 
+{% else %}
+<p><a href="{% url 'login' %}">Log In/Create Account</a></p> 
+{% endif %}
+
+
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
-</html>
+{% endblock content%}
